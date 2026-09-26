@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D4033AF2-0D6A-4AEF-B7A2-7E4BE73C6559}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyPilot.Api", "src\PolicyPilot.Api\PolicyPilot.Api.csproj", "{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B} = {D4033AF2-0D6A-4AEF-B7A2-7E4BE73C6559}
+	EndGlobalSection
+EndGlobal
