@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: read #This is required for actions/checkout
 
-    steps:
+ steps:
       - uses: actions/checkout@v4
 
       - name: Set up .NET Core
@@ -23,6 +23,10 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
+      # 👉 Add unit tests here
+      - name: Run unit tests
+        run: dotnet test --configuration Release --no-build
+
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
@@ -31,7 +35,6 @@ jobs:
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
-
   deploy:
     runs-on: windows-latest
     needs: build
