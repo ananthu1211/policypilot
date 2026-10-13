@@ -62,4 +62,3 @@ jobs:
           app-name: 'policypilot'
           package: ${{env.DOTNET_ROOT}}/myapp
           slot-name: 'Production'
-          package: .
