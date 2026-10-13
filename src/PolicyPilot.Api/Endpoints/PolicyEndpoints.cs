@@ -39,7 +39,7 @@ public static class PolicyEndpoints
         .WithName("GetPolicyClaims")
         .WithTags("Claims");
 
-        app.MapPost("/claims", async (CreateClaimRequest request, PolicyPilotDbContext db) =>
+        app.MapPost("/claim", async (CreateClaimRequest request, PolicyPilotDbContext db) =>
         {
             if (string.IsNullOrWhiteSpace(request.Description))
             {
