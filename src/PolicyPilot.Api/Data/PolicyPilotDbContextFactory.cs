@@ -15,7 +15,7 @@ public class PolicyPilotDbContextFactory : IDesignTimeDbContextFactory<PolicyPil
             .Build();
 
         var options = new DbContextOptionsBuilder<PolicyPilotDbContext>()
-            .UseNpgsql(configuration.GetConnectionString("PolicyPilot"))
+            .UseSqlServer(configuration.GetConnectionString("PolicyPilot"))
             .Options;
 
         return new PolicyPilotDbContext(options);

@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,12 +17,12 @@ namespace PolicyPilot.Api.Migrations
                 name: "Policies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PolicyNumber = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
-                    HolderName = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    Type = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
-                    Status = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PolicyNumber = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
+                    HolderName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Type = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,12 +33,12 @@ namespace PolicyPilot.Api.Migrations
                 name: "Claims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PolicyId = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PolicyId = table.Column<int>(type: "int", nullable: false),
                     ClaimDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    Description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: false),
-                    Status = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
