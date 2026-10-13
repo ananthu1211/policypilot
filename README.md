@@ -16,4 +16,4 @@ POST /claims — file a new claim
 PUT /policies/{id}/status — update policy status
 
 Stack
-C# / .NET, EF Core, PostgreSQL (local) then Azure SQL (deployed), Docker, GitHub Actions
+C# / .NET, EF Core, SQL Server (local SSMS) then Azure SQL (deployed), Docker, GitHub Actions

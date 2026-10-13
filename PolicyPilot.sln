@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D4033AF2-0D6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyPilot.Api", "src\PolicyPilot.Api\PolicyPilot.Api.csproj", "{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyPilot.Tests", "PolicyPilot.Tests\PolicyPilot.Tests.csproj", "{786CAB83-B18D-41C6-ACB6-2D4F24A10E85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{786CAB83-B18D-41C6-ACB6-2D4F24A10E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786CAB83-B18D-41C6-ACB6-2D4F24A10E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786CAB83-B18D-41C6-ACB6-2D4F24A10E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786CAB83-B18D-41C6-ACB6-2D4F24A10E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DD18CE40-14B3-4D07-B0BB-AF0A84D83E6B} = {D4033AF2-0D6A-4AEF-B7A2-7E4BE73C6559}

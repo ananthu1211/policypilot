@@ -19,3 +19,5 @@ app.MapGet("/", () => Results.Redirect("/swagger"));
 app.MapPolicyEndpoints();
 
 app.Run();
+
+public partial class Program;
