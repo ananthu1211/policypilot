@@ -4,6 +4,9 @@
 name: Build and deploy ASP.Net Core app to Azure Web App - policypilot
 
 on:
+  push:
+    branches:
+      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -59,4 +62,3 @@ jobs:
           app-name: 'policypilot'
           slot-name: 'Production'
           package: .
-          
