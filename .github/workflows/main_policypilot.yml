@@ -63,5 +63,3 @@ jobs:
           package: ${{env.DOTNET_ROOT}}/myapp
           slot-name: 'Production'
           package: .
-          
-		  
