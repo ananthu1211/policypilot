@@ -1,0 +1,99 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+#
+# Build Once, Deploy Many:
+#   build -> deploy-uat -> deploy-prod (manual approval via GitHub Environment "Production")
+#
+# Required secrets:
+#   UAT_AZURE_WEBAPP_PUBLISH_PROFILE
+#   PROD_AZURE_WEBAPP_PUBLISH_PROFILE
+#
+# Required GitHub Environments:
+#   UAT
+#   Production  (add required reviewers for the approval gate)
+
+name: Build Once, Deploy Many - PolicyPilot
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # 1. Build once — compile & package; artifact is reused by all deploy stages
+  # ---------------------------------------------------------------------------
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build (Release)
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Publish Web API
+        run: dotnet publish src/PolicyPilot.Api/PolicyPilot.Api.csproj -c Release -o ./publish --no-build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: .net-app
+          path: ./publish
+
+  # ---------------------------------------------------------------------------
+  # 2. Deploy to UAT (automatic after successful build)
+  # ---------------------------------------------------------------------------
+  deploy-uat:
+    name: Deploy to UAT
+    needs: build
+    runs-on: ubuntu-latest
+    environment: UAT
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+
+      - name: Deploy to Azure App Service (UAT)
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'policypilot'   # e.g. policypilot-uat
+          publish-profile: ${{ secrets.UAT_AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
+
+  # ---------------------------------------------------------------------------
+  # 3. Deploy to Production (waits for GitHub Environment approval)
+  # ---------------------------------------------------------------------------
+  deploy-prod:
+    name: Deploy to Production
+    needs: deploy-uat
+    runs-on: ubuntu-latest
+    environment: Production
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: .net-app
+
+      - name: Deploy to Azure App Service (Production)
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'policypilotprod'  # e.g. policypilot
+          publish-profile: ${{ secrets.PROD_AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
