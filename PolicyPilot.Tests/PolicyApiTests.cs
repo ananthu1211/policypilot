@@ -82,7 +82,7 @@ public class PolicyApiTests : IClassFixture<PolicyPilotWebApplicationFactory>
             description = ""
         };
 
-        var response = await _client.PostAsJsonAsync("/claims123", request);
+        var response = await _client.PostAsJsonAsync("/claimsdetials", request);
 
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
     }
@@ -97,7 +97,7 @@ public class PolicyApiTests : IClassFixture<PolicyPilotWebApplicationFactory>
             description = "Test claim from unit test"
         };
 
-        var response = await _client.PostAsJsonAsync("/claims123", request);
+        var response = await _client.PostAsJsonAsync("/claimsdetials", request);
 
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
 
